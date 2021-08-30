@@ -17,7 +17,7 @@
         <table border="1">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>#</th>
                     <th>capacidad</th>
                     <th>descripcion</th>
                     <th>nombre Salon</th>
