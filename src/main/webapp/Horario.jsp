@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Listado de Horarios</h1>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>ID</th>
