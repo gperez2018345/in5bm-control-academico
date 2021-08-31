@@ -13,22 +13,26 @@ package com.in5bmgrupo4.models.domain;
  * @time 04:16:51 PM
  */
 public class CarreraTecnica {
-    private int codigoCarrera;
+    private String codigoCarrera;
     private String nombre;
 
     public CarreraTecnica() {
     }
 
-    public CarreraTecnica(int codigoCarrera, String nombre) {
+    public CarreraTecnica(String codigoCarrera) {
+        this.codigoCarrera = codigoCarrera;
+    }
+
+    public CarreraTecnica(String codigoCarrera, String nombre) {
         this.codigoCarrera = codigoCarrera;
         this.nombre = nombre;
     }
 
-    public int getCodigoCarrera() {
+    public String getCodigoCarrera() {
         return codigoCarrera;
     }
 
-    public void setCodigoCarrera(int codigoCarrera) {
+    public void setCodigoCarrera(String codigoCarrera) {
         this.codigoCarrera = codigoCarrera;
     }
 
