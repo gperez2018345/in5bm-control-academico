@@ -11,6 +11,7 @@ import com.in5bmgrupo4.models.domain.Salon;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,14 +24,12 @@ import java.util.List;
 public class SalonDaoImpl implements ISalonDao {
 
     private static final String SQL_SELECT = "Select salon_id, capacidad, descripcion, nombre_salon from Salon";
-    private static final String SQL_DELETE = "Delete from Salon where salon_id =?";
+    private static final String SQL_DELETE = "delete from Salon where salon_id =?";
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
     private Connection conn = null;
     private Salon salon = null;
-    List <Salon> salones = new ArrayList<>();
-    
-    
+    List<Salon> salones = new ArrayList<>();
 
     @Override
     public List<Salon> listar() {
@@ -38,7 +37,7 @@ public class SalonDaoImpl implements ISalonDao {
             conn = Conexion.getConnection();
             pstmt = conn.prepareStatement(SQL_SELECT);
             rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 int salonId = rs.getInt("salon_id");
                 int capacidad = rs.getInt("capacidad");
                 String descripcion = rs.getString("descripcion");
@@ -49,14 +48,13 @@ public class SalonDaoImpl implements ISalonDao {
         } catch (Exception e) {
             e.printStackTrace(System.out);
         } finally {
-            Conexion.close(rs);
             Conexion.close(pstmt);
             Conexion.close(conn);
+            Conexion.close(rs);
+
         }
         return salones;
     }
-  
-    
 
     @Override
     public Salon encontrar(Salon salon) {
@@ -75,7 +73,19 @@ public class SalonDaoImpl implements ISalonDao {
 
     @Override
     public int eliminar(Salon salon) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            pstmt = conn.prepareStatement(SQL_DELETE);
+            pstmt.setInt(1, salon.getSalonId());
+            System.out.println(pstmt.toString());
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
-
 }

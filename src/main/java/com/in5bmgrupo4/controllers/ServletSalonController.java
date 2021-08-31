@@ -38,7 +38,7 @@ public class ServletSalonController extends HttpServlet{
                 case "editar'":
                     break;
                 case "eliminar":
-             //       eliminarSalon(request, response);
+                 eliminarSalon(request, response);
                     break;
             }
         }
@@ -53,5 +53,17 @@ public class ServletSalonController extends HttpServlet{
         sesion.setAttribute("listadoSalon", listaSalon);
         response.sendRedirect("Salon.jsp");
     }
+    
+   private void eliminarSalon(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        int salonId = Integer.parseInt(request.getParameter("salonId"));
+        Salon salones = new Salon(salonId);
+        int registrosEliminados = new SalonDaoImpl().eliminar(salones);
+        System.out.println("Cantidad de registros eliminados:" + registrosEliminados);
+        listarSalon(request, response);
+   }
+    @Override
+   protected void doPost(HttpServletRequest request, HttpServletResponse response){
+       
+   }
 }
 
