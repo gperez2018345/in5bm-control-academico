@@ -74,9 +74,6 @@ public class ServletCarreraTecnicaController extends HttpServlet{
        
     }
         
-        
-        
-        
 }
     
-    
+

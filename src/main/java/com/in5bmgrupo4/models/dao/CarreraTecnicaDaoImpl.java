@@ -32,6 +32,8 @@ public class CarreraTecnicaDaoImpl implements ICarreraTecnicaDao{
     private CarreraTecnica carrera = null;
     private List<CarreraTecnica> listaCarrerasTecnicas = new ArrayList<>();
     
+    /*private static final String SQL_SELECT = "SELECT codigo_carrera,nombre FROM carrera_tecnica";
+    private static final String SQL_DELETE = "DELETE FROM carrera_tecnica WHERE codigo_carrera = ?";*/
     
     @Override
     public List<CarreraTecnica> listar() {
