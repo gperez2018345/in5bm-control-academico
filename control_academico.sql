@@ -155,3 +155,18 @@ CONSTRAINT FK_Curso_salon
   insert into CarreraTecnica(codigo_carrera, nombre) values("TEC-0010-REPA-SOPOR-SISTE","Técnico en reparación y soporte de sistemas");
 select * from CarreraTecnica;
 
+-- Inserción de datos en la entidad: Instructor
+
+
+insert into  Instructor(instructor_id,  apellidos, nombre, direccion, telefono) values ("01","Castillo","Rafael","6ta Avenida zona 2","31363445");
+insert into  Instructor(instructor_id,  apellidos, nombre, direccion, telefono) values ("02","Ubeda","Saul","10ma calle zona 11","43567898");
+insert into  Instructor(instructor_id,  apellidos, nombre, direccion, telefono) values ("03","Aguilar","Roberto","16calle A, 6ta Avenida zona 7","12345678");
+insert into  Instructor(instructor_id,  apellidos, nombre, direccion, telefono) values ("04","Rodríguez","Ariel","6ta Calle 9na Avenida zona 10","89012345");
+insert into  Instructor(instructor_id,  apellidos, nombre, direccion, telefono) values ("05","Rodas","Cristian","5ta Avenida 14-48 zona 16","56789123");
+insert into  Instructor(instructor_id,  apellidos, nombre, direccion, telefono) values ("06","Urquizu","Santiago","10ma avenida 23calle zona 21","78124565");
+insert into  Instructor(instructor_id,  apellidos, nombre, direccion, telefono) values ("07","Medina","Jorge","6ta Avenida 3ra calle de la zona 15","98765432");
+insert into  Instructor(instructor_id,  apellidos, nombre, direccion, telefono) values ("08","Juarez","Armando","5ta calle 20Avenida zona 11","56657898");
+insert into  Instructor(instructor_id,  apellidos, nombre, direccion, telefono) values ("09","Batres","Moises","17calle diagonal 5 zona 12","34432112");
+insert into  Instructor(instructor_id,  apellidos, nombre, direccion, telefono) values ("10","de León","Carlos","6ta calle 17avenida zona 1","34562109");
+select * from Instructor;
+
