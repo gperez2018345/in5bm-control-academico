@@ -67,7 +67,7 @@ USE control_academico;
 -- -----------------------------------------------------
   
   CREATE TABLE IF NOT EXISTS Curso (
-  curso_id INT NOT NULL,
+  curso_id INT NOT NULL auto_increment,
   ciclo INT,
   cupo_maximo INT,
   cupo_minimo INT,
@@ -230,7 +230,24 @@ insert into  Instructor(apellidos, nombre, direccion, telefono)
 values ("de León","Carlos","6ta calle 17avenida zona 1","34562109");
 select * from Instructor;
 
--- Inserción de datos en la entidad: Instructor
-
-INSERT INTO curso (curso_id, ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
-VALUES (1,2019,375,001,"Enfoque en la informatica", "TEC-0001-MECA-INDU",1,1,1);
+-- Inserción de datos en la entidad: Curso
+INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
+VALUES (2019,375,001,"Orientación en construcción", "TEC-0001-MECA-INDU",1,1,1);
+INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
+VALUES (2020,350,001,"Reparación de computadoras", "TEC-0002-SIST",2,2,2);
+INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
+VALUES (2020,300, 015,"Principios de la mecánica", "TEC-0003-AUTO",3,3,3);
+INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
+VALUES (2021,400, 045,"Mantenimiento industrial", "TEC-0004-MANT-INDU",4,4,4);
+INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
+VALUES (2021,250, 030,"Electricidad y mantenimiento industrial", "TEC-0005-ELECTRI-INDU",5,5,5);
+INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
+VALUES (2021,300, 100,"Electromecánica II", "TEC-0006-ELME-INDU",6,6,6);
+INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
+VALUES (2021,150, 000,"Electronica avanzada", "TEC-0007-ELECTRO-INDU",7,7,7);
+INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
+VALUES (2021,400, 125,"Mecánica Diesel", "TEC-0008-VEHIC-DIESE",8,8,8);
+INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
+VALUES (2021,500, 225,"Mecatronica I", "TEC-0009-MECATRO",9,9,9);
+INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
+VALUES (2022,200, 000,"Mantenimiento de sistemas", "TEC-0010-REPA-SOPOR-SISTE",10,10,10);
