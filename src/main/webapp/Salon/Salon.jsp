@@ -10,12 +10,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <title>Listado Salon</title>
     </head>
     <body>
         <h1>Lista Salon</h1>
-        <table border="1">
-            <thead>
+              
+        <table  class="table table-striped table-bordered">
+            <thead class ="table-dark"> 
                 <tr>
                     <th>#</th>
                     <th>capacidad</th>
@@ -32,7 +34,7 @@
                     <td>${salon.descripcion}</td>
                     <td>${salon.nombreSalon}</td>
                     <td> 
-                        <a href="${pageContext.request.contextPath}/ServletSalonController?accion=eliminar&salonId=${salon.salonId}">Eliminar</a>
+                        <a class="btn btn-danger"href="${pageContext.request.contextPath}/ServletSalonController?accion=eliminar&salonId=${salon.salonId}">Eliminar</a>
                     </td>
                 </tr>
             </c:forEach>
