@@ -30,6 +30,10 @@ public class Instructor {
         this.telefono = telefono;
     }
 
+    public Instructor(int instructorId) {
+         this.instructorId = instructorId;
+    }
+
     public int getInstructorId() {
         return instructorId;
     }

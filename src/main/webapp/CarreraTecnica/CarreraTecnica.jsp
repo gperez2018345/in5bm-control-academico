@@ -10,13 +10,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+          <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <title>Carrera Tecnica</title>
     </head>
     <body>
         <h1>Lista de Carreras Tecnicas</h1>
         
-        <table border="2">
-            <thead> 
+        <table  class="table table-striped table-bordered">
+            <thead class ="table-dark"> 
                 <tr>
                     <th>Codigo Carrera</th>
                     <th>Nombre</th>
@@ -30,7 +31,7 @@
                         <td>${carreraTecnica.codigoCarrera}</td>
                         <td>${carreraTecnica.nombre}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/ServletCarreraTecnicaController?accion=eliminar&codigoCarrera=${carreraTecnica.codigoCarrera}">Eliminar</a>
+                            <a  class="btn btn-danger" href="${pageContext.request.contextPath}/ServletCarreraTecnicaController?accion=eliminar&codigoCarrera=${carreraTecnica.codigoCarrera}">Eliminar</a>
                         </td>
                     </tr>
                 </c:forEach>

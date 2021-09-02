@@ -10,12 +10,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                  <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <title>Horario</title>
     </head>
     <body>
         <h1>Listado de Horarios</h1>
-        <table border="1">
-            <thead>
+              
+        <table  class="table table-striped table-bordered">
+            <thead class ="table-dark"> 
                 <tr>
                     <th>ID</th>
                     <th>Horario final</th>
@@ -30,7 +32,7 @@
                         <td>${horario.horarioFinal} </td>
                         <td>${horario.horarioInicio}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/ServletHorarioController?accion=eliminar&horarioId=${horario.horarioId}">Eliminar</a>
+                            <a  class="btn btn-danger"href="${pageContext.request.contextPath}/ServletHorarioController?accion=eliminar&horarioId=${horario.horarioId}">Eliminar</a>
                         </td>
                     </tr>
                 </c:forEach>

@@ -10,12 +10,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <title>Alumno</title>
     </head>
     <body>
         <h1>Listado de Alumnos</h1>
-        <table border="1">
-            <thead>
+
+        <table class="table table-striped table-bordered">
+            <thead class ="table-dark">
                 <tr>
                     <th>ID</th>
                     <th>Apellidos</th>
@@ -32,7 +34,7 @@
                         <td>${alumno.nombres}</td>
                         <td>${alumno.email}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/ServletAlumnoController?accion=eliminar&carne=${alumno.carne}">Eliminar</a>
+                            <a class="btn btn-danger" href="${pageContext.request.contextPath}/ServletAlumnoController?accion=eliminar&carne=${alumno.carne}">Eliminar</a>
                         </td>
                     </tr>
                 </c:forEach>
