@@ -21,17 +21,6 @@ public class Salon {
     public Salon() {
     }
 
-    public Salon(int salonId) {
-        this.salonId = salonId;
-    }
-
-    public Salon(int capacidad, String descripcion, String nombreSalon) {
-        this.capacidad = capacidad;
-        this.descripcion = descripcion;
-        this.nombreSalon = nombreSalon;
-    }
-    
-
     public Salon(int salonId, int capacidad, String descripcion, String nombreSalon) {
         this.salonId = salonId;
         this.capacidad = capacidad;
