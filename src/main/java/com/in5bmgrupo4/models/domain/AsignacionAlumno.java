@@ -21,6 +21,10 @@ public class AsignacionAlumno {
     public AsignacionAlumno() {
     }
 
+    public AsignacionAlumno(int asignacionId) {
+        this.asignacionId = asignacionId;
+    }
+
     public AsignacionAlumno(int asignacionId, String carne, int cursoId, Date fechaAsignacion) {
         this.asignacionId = asignacionId;
         this.carne = carne;

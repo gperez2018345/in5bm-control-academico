@@ -51,7 +51,7 @@ public class ServletSalonController extends HttpServlet{
         List<Salon> listaSalon = new SalonDaoImpl().listar();
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoSalon", listaSalon);
-        response.sendRedirect("Salon.jsp");
+        response.sendRedirect("Salon/Salon.jsp");
     }
     
    private void eliminarSalon(HttpServletRequest request, HttpServletResponse response) throws IOException{
