@@ -17,7 +17,7 @@
                 <li><a href="${pageContext.request.contextPath}/ServletAlumnoController?accion=listar">Alumno</a></li>
                 <li><a href="AsignacionAlumno.jsp">Asignacion Alumno</a></li>
                 <li><a href="${pageContext.request.contextPath}/ServletCarreraTecnicaController?accion=listar">Carrera Tecnica</a></li>
-                <li><a href="Curso.jsp">Curso</a></li>
+                <li><a href="${pageContext.request.contextPath}/ServletCursoController?accion=listar">Curso</a></li>
                 <li><a href="${pageContext.request.contextPath}/ServletHorarioController?accion=listar">Horario</a></li>
                 <li><a href="${pageContext.request.contextPath}/ServletInstructorController?accion=listar">Instructor</a></li>
                 <li><a href="${pageContext.request.contextPath}/ServletSalonController?accion=listar">Salon</a></li>

@@ -55,7 +55,7 @@ public class ServletCarreraTecnicaController extends HttpServlet{
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoCarreraTecnica", listaCarreras);
 
-        response.sendRedirect("CarreraTecnica.jsp");
+        response.sendRedirect("CarreraTecnica/CarreraTecnica.jsp");
     }
 ////////
     private void eliminarCarrerasTecnicas(HttpServletRequest request, HttpServletResponse response) throws IOException{
