@@ -79,13 +79,19 @@ USE control_academico;
   PRIMARY KEY (curso_id),
   CONSTRAINT FK_Curso_codigo_Carrera
     FOREIGN KEY (codigo_carrera)
-    REFERENCES CarreraTecnica (codigo_carrera),
+    REFERENCES CarreraTecnica (codigo_carrera)
+    on delete cascade
+			on update cascade,
   CONSTRAINT FK_Curso_horario
     FOREIGN KEY (horario_id)
-    REFERENCES Horario (horario_id),
+    REFERENCES Horario (horario_id)
+    on delete cascade
+			on update cascade,
  CONSTRAINT FK_Curso_instructor
     FOREIGN KEY (instructor_id)
-    REFERENCES Instructor (instructor_id),
+    REFERENCES Instructor (instructor_id)
+    on delete cascade
+			on update cascade,
 CONSTRAINT FK_Curso_salon
     FOREIGN KEY (salon_id)
     REFERENCES Salon (salon_id) 
@@ -98,6 +104,7 @@ CONSTRAINT FK_Curso_salon
 -- Tabla Asignacion Alumno
 -- -----------------------------------------------------
   
+  DROP TABLE IF EXISTS AsignacionAlumno;
   CREATE TABLE IF NOT EXISTS AsignacionAlumno (
   asignacion_id VARCHAR(45) NOT NULL,
   carne VARCHAR(16),
@@ -106,7 +113,9 @@ CONSTRAINT FK_Curso_salon
   PRIMARY KEY (asignacion_id),
   CONSTRAINT FK_AsignacionAlumno_carne
     FOREIGN KEY (carne)
-    REFERENCES Alumno (carne),
+    REFERENCES Alumno (carne)
+		on delete cascade
+			on update cascade,
   CONSTRAINT FK_AsignacionAlumno_curso
     FOREIGN KEY (curso_id)
     REFERENCES Curso (curso_id)
@@ -210,3 +219,28 @@ CONSTRAINT FK_Curso_salon
 	VALUES (2021,500, 225,"Mecatronica I", "TEC-0009-MECATRO",9,9,9);
 	INSERT INTO curso (ciclo, cupo_maximo, cupo_minimo, descripcion, codigo_carrera, horario_id, instructor_id, salon_id) 
 	VALUES (2022,200, 000,"Mantenimiento de sistemas", "TEC-0010-REPA-SOPOR-SISTE",10,10,10);
+
+-- Inserción de datos en la entidad: AsignacionAlumnos
+	INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
+	VALUES ("1","2021001","1","2021-01-01 07:00:00");
+	INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
+	VALUES ("2","2021002","2","2021-01-02 07:10:00");
+    INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
+	VALUES ("3","2021003","3","2021-01-03 07:05:00");
+    INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
+	VALUES ("4","2021004","4","2021-01-01 07:08:00");
+    INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
+	VALUES ("5","2021005","5","2021-01-02 07:00:00");
+    INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
+	VALUES ("6","2021006","6","2021-01-03 07:01:00");
+    INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
+	VALUES ("7","2021007","7","2021-01-03 07:00:00");
+    INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
+	VALUES ("8","2021008","8","2021-01-04 07:00:00");
+    INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
+	VALUES ("9","2021009","9","2021-01-01 07:02:00");
+    INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
+	VALUES ("10","2021010","10","2021-01-02 07:10:00");
+	SELECT * FROM AsignacionAlumno;
+    
+    

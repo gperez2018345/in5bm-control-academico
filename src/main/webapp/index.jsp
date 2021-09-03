@@ -15,7 +15,7 @@
         <header><ul>
                 <h1>Control Academico</h1>
                 <li><a href="${pageContext.request.contextPath}/ServletAlumnoController?accion=listar">Alumno</a></li>
-                <li><a href="AsignacionAlumno.jsp">Asignacion Alumno</a></li>
+                <li><a href="${pageContext.request.contextPath}/ServletAsignacionAlumnoController?accion=listar">Asignacion Alumno</a></li>
                 <li><a href="${pageContext.request.contextPath}/ServletCarreraTecnicaController?accion=listar">Carrera Tecnica</a></li>
                 <li><a href="${pageContext.request.contextPath}/ServletCursoController?accion=listar">Curso</a></li>
                 <li><a href="${pageContext.request.contextPath}/ServletHorarioController?accion=listar">Horario</a></li>
