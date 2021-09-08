@@ -1,55 +1,23 @@
+
+
 * {
     margin: 0px;
     padding: 0px;
 }
 
-#kinal-header {
-    background-color:#23376D;
-    color:white;
-    text-align: center;
-    padding: 10px;
-}
-
 #footer-kinal {
-    background-color: #23376D;
+    background-color: black;
     text-align: center;
     color: white;
-    padding: 10px;
+    padding: 4px;
     position: fixed;
     bottom: 0px;
     width:100%;
-    font-size: 20px;
+    font-size: 15px;
+
 }
 
-#contenido {
-    padding: 20px;
-    border: 4px solid #23376D;
-}
-
-.descripcion {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin: 15px;
-    padding-left: 150px;
-    padding-right: 150px;
-    font-family: 'Sofia', cursive;
-    
-}
-
-@font-face {
-    font-family: Roboto Slab;
-    src: url("../font/RobotoSlab-VariableFont_wght.ttf");
-}
-
-#kinal-img-principal {
-    display: block;
-    margin: auto;
-}
-#texto{
-    text-align: center;
-}
-
-#titulos{
-    text-align: center;
+body{
+background: rgb(16,5,200);
+background: radial-gradient(circle, rgba(16,5,200,1) 0%, rgba(25,25,65,1) 0%, rgba(24,3,91,1) 85%);
 }
