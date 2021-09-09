@@ -15,18 +15,22 @@
         <link rel="stylesheet" href="../assets/css/styleIdentidad.css">
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <script src="https://kit.fontawesome.com/a2549c21b3.js" crossorigin="anonymous"></script>
-        <title>Listado Estudiantes</title>
+
+        <title>Listado Alumnos</title>
+
     </head>
     <body>
         <!-- CABECERA -->
         <jsp:include page="/WEB-INF/paginas/comunes/header.jsp" />
-        <div id="main-header" class="py-2 bg-light text-dark mt-5 bg-black ">
+
+        <div id="main-header" class="py-2 bg-light text-light bg-black ">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 text-light ">
-                        <h1>
-                            Listado Estudiantes   <i class="fas fa-clipboard-list"> </i>
-                        </h1>
+                    <div class="col-12">
+                        <h2 class="text-center text-light">
+                            Control Alumnos  <i class="fas fa-clipboard-list"> </i>
+                        </h2>
+
 
                     </div>
                 </div>
@@ -37,11 +41,13 @@
         <main>
 
             <!-- Boton Agregar -->
-            <section id="accions" class="py-4 mb-4">
+
+            <section id="actions" class="py-4 mb-4">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-3">
-                            <a href="#" class=" btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#agregarmodal">
+                            <a href="#" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#agregarmodal">
+
                                 <i class="fas fa-plus"></i>
                                 Agregar Alumno
                             </a>
@@ -54,38 +60,57 @@
             <div class="modal fade" id="agregarmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header bg-primary text-white">
-                            <h5 class="modal-title" id="exampleModalLabel">Agregar Estudiante</h5>
+
+                        <div class="modal-header bg-dark text-white">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Salon</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <form method="GET" action="${pageContext.request.contextPath}/ServletEstudianteController?accion=insertar">                
+                        <form method="POST" action="${pageContext.request.contextPath}/ServletAlumnoController">
+                            <div class="modal-body">
+
                                 <div class="form-group">
-                                    <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre">
+                                    <label for="carne">Carne</label>
+                                    <input type="text" class="form-control" name="carne" id="carne">
                                 </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-dark">Guardar </button>
-                        </div>
+                                <div class="form-group">
+                                    <label for="nombres">Nombre</label>
+                                    <input type="text" class="form-control" name="nombres" id="nombres">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellidos">Apellido</label>
+                                    <input type="text" class="form-control" name="apellidos" id="apellidos">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email">
+                                </div>
+                                <input type="hidden" name="accion" value="insertar">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-success">Guardar </button>
+                            </div>
+                        </form>
+
+
                     </div>
                 </div>
             </div>
 
 
-            <section id="estudiante">
+
+            <section id="alumno">
                 <div class="container">
                     <div class="row">
-                        <div class="col-15 col-md-9">
-                            <div class="hard">
+                        <div class="col-12 col-md-12 mb-5 pb-5">
+                            <div class="card">
                                 <div class="card-header bg-black text-light">
-                                    <h4>Listado estudiantes</h4>
+                                    <h4 class="text-center">Listado estudiantes</h4>
                                 </div>
                             </div>
                             <table class="table table-dark table-hover text-xl-center table-bordered">
-                                <thead class ="table-dark">
+                                <thead class ="table bg-black text-light">
+
                                     <tr>
                                         <th>ID</th>
                                         <th>Apellidos</th>
@@ -104,7 +129,9 @@
                                             <td>${alumno.email}</td>
                                             <!-- editar -->
                                             <td>
-                                                <a class="btn btn-warning text-light" href="${pageContext.request.contextPath}/ServletAlumnoController?accion=editar&carne=${alumno.carne}">
+
+                                                <a class="btn btn-secondary text-light" href="${pageContext.request.contextPath}/ServletAlumnoController?accion=editar&carne=${alumno.carne}">
+
                                                     <i class="far fa-edit"></i> Editar
                                                 </a>
                                             </td>

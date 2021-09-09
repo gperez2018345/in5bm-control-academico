@@ -20,6 +20,12 @@
     <body>
             <jsp:include page="/WEB-INF/paginas/comunes/header.jsp" />
             <main>
+<<<<<<< HEAD
+=======
+                <section>
+                    <img id="kinal-img-principal" src="assets/images/fotofondo.png" alt="Fundacion Kinal">
+                </section>
+>>>>>>> 226b0319a03ab7c8cdfd4638079b4efc8a65f3d5
             </main>
             <jsp:include page="/WEB-INF/paginas/comunes/footer.jsp" />
             <script src="assets/js/jquery-3.6.0.js"></script>
