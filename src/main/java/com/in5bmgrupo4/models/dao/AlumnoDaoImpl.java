@@ -26,6 +26,7 @@ public class AlumnoDaoImpl implements IAlumnoDao{
 
     private static final String SQL_SELECT="SELECT carne, apellidos, nombres, email FROM Alumno";
     private static final String SQL_DELETE="DELETE FROM Alumno WHERE carne=?";
+    private static final String SQL_INSERT="INSERT INTO Alumno(carne, apellidos, nombres, email)VALUES(?,?,?,?);";
     
     private Connection conn=null;
     private PreparedStatement pstmt=null;
@@ -68,7 +69,24 @@ public class AlumnoDaoImpl implements IAlumnoDao{
 
     @Override
     public int insertar(Alumno alumno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int rows=0;
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_INSERT);
+            pstmt.setString(1,alumno.getCarne());
+            pstmt.setString(2,alumno.getApellidos());
+            pstmt.setString(3,alumno.getNombres());
+            pstmt.setString(4,alumno.getEmail());
+            rows=pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
 
     @Override
