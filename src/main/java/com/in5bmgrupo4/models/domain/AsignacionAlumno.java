@@ -13,7 +13,7 @@ import java.sql.Date;
  * @time 04:17:29 PM
  */
 public class AsignacionAlumno {
-    private int asignacionId;
+    private String asignacionId;
     private String carne;
     private int cursoId;
     private  Date fechaAsignacion;
@@ -21,18 +21,22 @@ public class AsignacionAlumno {
     public AsignacionAlumno() {
     }
 
-    public AsignacionAlumno(int asignacionId, String carne, int cursoId, Date fechaAsignacion) {
+    public AsignacionAlumno(String asignacionId, String carne, int cursoId, Date fechaAsignacion) {
         this.asignacionId = asignacionId;
         this.carne = carne;
         this.cursoId = cursoId;
         this.fechaAsignacion = fechaAsignacion;
     }
+    
+    public AsignacionAlumno(String asignacionId) {
+        this.asignacionId = asignacionId;
+    }
 
-    public int getAsignacionId() {
+    public String getAsignacionId() {
         return asignacionId;
     }
 
-    public void setAsignacionId(int asignacionId) {
+    public void setAsignacionId(String asignacionId) {
         this.asignacionId = asignacionId;
     }
 

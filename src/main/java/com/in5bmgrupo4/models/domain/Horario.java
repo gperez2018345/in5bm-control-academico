@@ -14,15 +14,25 @@ import java.sql.Time;
  * @time 04:16:22 PM
  */
 public class Horario {
+    
     private int horarioId;
     private Time horarioFinal;
     private Time horarioInicio;
 
     public Horario() {
     }
-
+    
+    public Horario(int horarioId) {
+        this.horarioId=horarioId;
+    }
+    
     public Horario(int horarioId, Time horarioFinal, Time horarioInicio) {
         this.horarioId = horarioId;
+        this.horarioFinal = horarioFinal;
+        this.horarioInicio = horarioInicio;
+    }
+
+    public Horario(Time horarioFinal, Time horarioInicio) {
         this.horarioFinal = horarioFinal;
         this.horarioInicio = horarioInicio;
     }
@@ -47,13 +57,13 @@ public class Horario {
         return horarioInicio;
     }
 
+    public void setHorarioInicio(Time horarioInicio) {
+        this.horarioInicio = horarioInicio;
+    }
+
     @Override
     public String toString() {
         return "Horario{" + "horarioId=" + horarioId + ", horarioFinal=" + horarioFinal + ", horarioInicio=" + horarioInicio + '}';
-    }
-
-    public void setHorarioInicio(Time horarioInicio) {
-        this.horarioInicio = horarioInicio;
     }
     
     
