@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../assets/css/styleIdentidad.css">
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
-        <script src="https://kit.fontawesome.com/a2549c21b3.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/611b0a953c.js" crossorigin="anonymous"></script>
 
         <title>Carrera Técnica</title>
 
