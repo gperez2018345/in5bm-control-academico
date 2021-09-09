@@ -28,6 +28,7 @@ public class ServletAlumnoController extends HttpServlet {
    @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
        String accion=request.getParameter("accion");
+       System.out.println("entrando a do get");
         
         if(accion!=null){
             switch(accion){
@@ -56,7 +57,7 @@ public class ServletAlumnoController extends HttpServlet {
        
        HttpSession sesion=request.getSession();
        sesion.setAttribute("listadoAlumno", listaAlumnos );
-       response.sendRedirect("Alumno.jsp");
+       response.sendRedirect("Alumno/Alumno.jsp");
    }
    
    private void eliminarAlumnos(HttpServletRequest request, HttpServletResponse response) throws IOException{
@@ -68,7 +69,29 @@ public class ServletAlumnoController extends HttpServlet {
    }
    
    @Override
-   protected void doPost(HttpServletRequest request, HttpServletResponse response){
-       
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+       System.out.println("entrando a do Post");
+        String accion = request.getParameter("accion");
+        if (accion != null) {
+            switch (accion) {
+                case "insertar":
+                    insertarAlumnos(request, response);
+                    break;
+            }
+        }
    }
+   
+    private void insertarAlumnos(HttpServletRequest request, HttpServletResponse response)throws IOException{
+        System.out.println("entrando a insertar alumno");
+        String carne=request.getParameter("carne");
+        String apellidos=request.getParameter("apellidos");
+        String nombres=request.getParameter("nombres");
+        String email=request.getParameter("email");
+        Alumno alumno=new Alumno(carne, apellidos, nombres, email);
+        System.out.println(alumno);
+        int registrosAgregados=new AlumnoDaoImpl().insertar(alumno);
+        System.out.println("Cantidad de registros agregados: " + registrosAgregados);
+        listarAlumnos(request, response);
+    }
+   
 }

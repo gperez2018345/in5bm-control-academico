@@ -29,6 +29,7 @@ public class ServletSalonController extends HttpServlet{
     
     @Override 
     protected void doGet(HttpServletRequest request , HttpServletResponse response) throws IOException{
+        System.out.println("entrando a do get");
          String accion = request.getParameter("accion");
         if (accion != null) {
             switch (accion) {
@@ -42,8 +43,6 @@ public class ServletSalonController extends HttpServlet{
                     break;
             }
         }
-        
-
     }
     
     
@@ -51,7 +50,7 @@ public class ServletSalonController extends HttpServlet{
         List<Salon> listaSalon = new SalonDaoImpl().listar();
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoSalon", listaSalon);
-        response.sendRedirect("Salon.jsp");
+        response.sendRedirect("Salon/Salon.jsp");
     }
     
    private void eliminarSalon(HttpServletRequest request, HttpServletResponse response) throws IOException{
@@ -62,8 +61,32 @@ public class ServletSalonController extends HttpServlet{
         listarSalon(request, response);
    }
     @Override
-   protected void doPost(HttpServletRequest request, HttpServletResponse response){
-       
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+       System.out.println("entrando a do Post");
+        String accion = request.getParameter("accion");
+        if (accion != null) {
+            switch (accion) {
+                case "insertar":
+                    insertarSalones(request, response);
+                    break;
+            }
+        }
    }
+   
+   private void insertarSalones(HttpServletRequest request, HttpServletResponse response)throws IOException{
+        System.out.println("entrando a insertar salon");
+        String nombreSalon=request.getParameter("nombre");
+        String descripcion=request.getParameter("descripcion");
+        String capacidadStr=request.getParameter("capacidad");
+        int capacidad=0;
+        if((capacidadStr!=null)&&(!capacidadStr.equals(""))){
+            capacidad=Integer.parseInt(request.getParameter("capacidad"));
+        }
+        Salon salon=new Salon(capacidad, descripcion, nombreSalon);
+        System.out.println(salon);
+        int registrosAgregados=new SalonDaoImpl().insertar(salon);
+        System.out.println("Cantidad de registros agregados: " + registrosAgregados);
+        listarSalon(request, response);
+    }
 }
 
