@@ -56,7 +56,7 @@ public class ServletAlumnoController extends HttpServlet {
        
        HttpSession sesion=request.getSession();
        sesion.setAttribute("listadoAlumno", listaAlumnos );
-       response.sendRedirect("Alumno.jsp");
+       response.sendRedirect("Alumno/Alumno.jsp");
    }
    
    private void eliminarAlumnos(HttpServletRequest request, HttpServletResponse response) throws IOException{

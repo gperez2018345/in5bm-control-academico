@@ -25,6 +25,8 @@ import javax.servlet.http.HttpServlet;
 @WebServlet("/ServletCarreraTecnicaController")
 public class ServletCarreraTecnicaController extends HttpServlet{
     
+    private static final String JSP_LISTAR_CARRERA_TECNICA = "CarreraTecnica/CarreraTecnica.jsp";
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String accion = request.getParameter("accion");
@@ -55,7 +57,7 @@ public class ServletCarreraTecnicaController extends HttpServlet{
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoCarreraTecnica", listaCarreras);
 
-        response.sendRedirect("CarreraTecnica.jsp");
+        response.sendRedirect(JSP_LISTAR_CARRERA_TECNICA);
     }
 ////////
     private void eliminarCarrerasTecnicas(HttpServletRequest request, HttpServletResponse response) throws IOException{
