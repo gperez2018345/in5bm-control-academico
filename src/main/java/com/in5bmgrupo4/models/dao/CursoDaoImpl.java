@@ -25,7 +25,9 @@ import java.util.List;
 public class CursoDaoImpl implements ICursoDao{
 
     private static final String SQL_SELECT = "SELECT curso_id, ciclo, cupo_maximo,cupo_minimo,descripcion,codigo_carrera,horario_id,instructor_id,salon_id FROM curso";
+    private static final String SQL_INSERT = "INSERT INTO curso (ciclo, cupo_maximo,cupo_minimo,descripcion,codigo_carrera,horario_id,instructor_id,salon_id) VALUES(?,?,?,?,?,?,?,?);";
     private static final String SQL_DELETE = "DELETE from curso where curso_id = ?";
+    private static final String SQL_SELECT_IB = "SELECT curso_id, ciclo, cupo_maximo,cupo_minimo,descripcion,codigo_carrera,horario_id,instructor_id,salon_id FROM curso WHERE curso_id=? ";
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
@@ -67,12 +69,69 @@ public class CursoDaoImpl implements ICursoDao{
 
     @Override
     public Curso encontrar(Curso curso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            conn = Conexion.getConnection();
+            pstmt = conn.prepareStatement(SQL_SELECT_IB);
+            pstmt.setInt(1, curso.getCursoId());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int ciclo = rs.getInt("ciclo");
+                int cupoMaximo = rs.getInt("cupo_maximo");
+                int cupoMinimo = rs.getInt("cupo_minimo");
+                String descripcion = rs.getString("descripcion");
+                String codigoCarrera = rs.getString("codigo_carrera");
+                int horarioId = rs.getInt("horario_id");
+                int instructorId = rs.getInt("instructor_id");
+                int salonId = rs.getInt("salon_id");
+
+                curso.setCursoId(salonId);
+                curso.setCupoMaximo(cupoMaximo);
+                curso.setCupoMinimo(cupoMinimo);
+                curso.setDescripcion(descripcion);
+                curso.setCodigoCarrera(codigoCarrera);
+                curso.setHorarioId(horarioId);
+                curso.setInstructorId(instructorId);
+                curso.setSalonId(salonId);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(pstmt);
+            Conexion.close(conn);
+        }
+        return curso;
     }
+    
 
     @Override
     public int insertar(Curso curso) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int rows=0;
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_INSERT);
+            pstmt.setInt(1, curso.getCursoId());
+            pstmt.setInt(2,curso.getCiclo());
+            pstmt.setInt(3,curso.getCupoMaximo());
+            pstmt.setInt(4,curso.getCupoMaximo());
+            pstmt.setString(5, curso.getDescripcion());
+            pstmt.setString(6,curso.getCodigoCarrera());
+            pstmt.setInt(7,curso.getHorarioId());
+            pstmt.setInt(8,curso.getSalonId());
+            rows=pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
 
     @Override

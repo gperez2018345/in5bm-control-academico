@@ -27,7 +27,8 @@ public class HorarioDaoImpl implements IHorarioDao{
     
     private static final String SQL_SELECT="SELECT horario_id, horario_final, horario_inicio FROM Horario";
     private static final String SQL_DELETE="DELETE FROM Horario WHERE horario_id=?";
-
+    private static final String SQL_INSERT="INSERT INTO Horario (horario_final, horario_inicio)VALUES(?,?);";
+    
     private Connection conn=null;
     private PreparedStatement pstmt=null;
     private ResultSet rs= null;
@@ -68,7 +69,22 @@ public class HorarioDaoImpl implements IHorarioDao{
 
     @Override
     public int insertar(Horario horario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int rows=0;
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_INSERT);
+            pstmt.setTime(1, horario.getHorarioFinal());
+            pstmt.setTime(2, horario.getHorarioInicio());
+            rows=pstmt.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace(System.out);
+        } catch(Exception e) {
+            e.printStackTrace(System.out);
+        } finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
 
     @Override

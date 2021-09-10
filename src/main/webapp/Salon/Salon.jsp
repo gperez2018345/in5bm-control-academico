@@ -13,6 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../assets/css/styleIdentidad.css">
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
         <script src="https://kit.fontawesome.com/a2549c21b3.js" crossorigin="anonymous"></script>
         <title>Listado Salon</title>
     </head>
@@ -128,6 +129,7 @@
                 </div>
             </section>
         </main>
+        <jsp:include page="/WEB-INF/paginas/comunes/footer.jsp" />
         <script src="../assets/js/jquery-3.6.0.js"></script>
         <script src="../assets/js/bootstrap.bundle.js"></script>
     </body>

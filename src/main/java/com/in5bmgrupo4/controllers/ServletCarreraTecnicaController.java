@@ -80,7 +80,7 @@ public class ServletCarreraTecnicaController extends HttpServlet {
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoCarreraTecnica", listaCarreras);
 
-        response.sendRedirect("CarreraTecnica/CarreraTecnica.jsp");
+        response.sendRedirect("carrera-tecnica/carrera-tecnica.jsp");
     }
 ////////
 

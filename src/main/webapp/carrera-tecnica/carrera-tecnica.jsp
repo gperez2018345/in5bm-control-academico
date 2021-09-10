@@ -15,6 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../assets/css/styleIdentidad.css">
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
         <script src="https://kit.fontawesome.com/611b0a953c.js" crossorigin="anonymous"></script>
 
         <title>Carrera Técnica</title>
@@ -98,7 +99,7 @@
                         <div class="col-12 col-md-12 mb-5 pb-5">
                             <div class="card">
                                 <div class="card-header bg-black text-light">
-                                    <h4 class="text-center">Listado estudiantes</h4>
+                                    <h4 class="text-center">Listado Carrera Tecnica</h4>
                                 </div>
                             </div>
                             <table class="table table-dark table-hover text-xl-center table-bordered">
@@ -140,6 +141,7 @@
         </main>
 
         <!-- Javascript -->
+        <jsp:include page="/WEB-INF/paginas/comunes/footer.jsp" />
         <script src="../assets/js/jquery-3.6.0.js"></script>
         <script src="../assets/js/bootstrap.bundle.js"></script> 
 

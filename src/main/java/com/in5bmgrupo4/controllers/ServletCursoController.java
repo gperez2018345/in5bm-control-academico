@@ -54,7 +54,7 @@ public class ServletCursoController extends HttpServlet {
         List<Curso> listarCurso = new CursoDaoImpl().listar();
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoCurso", listarCurso);
-        response.sendRedirect("Curso/Curso.jsp");
+        response.sendRedirect("curso/curso.jsp");
     }
 
     private void eliminarCurso(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -68,8 +68,10 @@ public class ServletCursoController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+        }
     }
+    
 
-}
+

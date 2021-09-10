@@ -57,7 +57,7 @@ public class ServletInstructorController extends HttpServlet {
 
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoInstructor", listaInstructor);
-        response.sendRedirect("Instructor/Instructor.jsp");
+        response.sendRedirect("instructor/instructor.jsp");
     }
 
     private void eliminarInstructor(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -9,6 +9,7 @@ package com.in5bmgrupo4.controllers;
 import com.in5bmgrupo4.models.dao.AsignacionAlumnoDaoImpl;
 import com.in5bmgrupo4.models.domain.AsignacionAlumno;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,41 @@ import javax.servlet.http.HttpSession;
 public class ServletAsignacionAlumnoController extends HttpServlet{
 
     @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("UTF-8");
+
+        String accion = request.getParameter("accion");
+        
+        if (accion != null) {
+            switch (accion) {
+                case "insertar":
+                    insertarAsignacionAlumno(request, response);
+                    break;
+            }
+        }
+    }
+    
+    private void insertarAsignacionAlumno(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
+        String asignacionId = request.getParameter("asignacionId");
+        String carne = request.getParameter("carne");
+        int cursoId = Integer.parseInt(request.getParameter("cursoId"));
+        Date fechaAsignacion = Date.valueOf(request.getParameter("fechaAsignacion"));
+    
+        
+        AsignacionAlumno asignacionAlumno = new AsignacionAlumno(asignacionId,carne,cursoId,fechaAsignacion);
+        
+        int registrosInsertados=new AsignacionAlumnoDaoImpl().insertar(asignacionAlumno);
+        System.out.println("Registros insertados: "+registrosInsertados);
+        
+        listarAsignacionAlumno(request,response);
+        
+    }
+    
+    
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("UTF-8");
         String accion = request.getParameter("accion");
 
         if (accion != null) {
@@ -55,7 +90,7 @@ public class ServletAsignacionAlumnoController extends HttpServlet{
         List<AsignacionAlumno> listarAsignacionAlumno = new AsignacionAlumnoDaoImpl().listar();
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoAsignacionAlumno", listarAsignacionAlumno);
-        response.sendRedirect("AsignacionAlumno/AsignacionAlumno.jsp");
+        response.sendRedirect("asignacion-alumno/asignacion-alumno.jsp");
     }
 
     private void eliminarAsignacionAlumno(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -68,9 +103,6 @@ public class ServletAsignacionAlumnoController extends HttpServlet{
 
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-
-    }
+    
     
 }

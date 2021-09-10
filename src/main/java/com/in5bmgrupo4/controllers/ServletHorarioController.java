@@ -9,6 +9,7 @@ package com.in5bmgrupo4.controllers;
 import com.in5bmgrupo4.models.dao.HorarioDaoImpl;
 import com.in5bmgrupo4.models.domain.Horario;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.List;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,7 +57,7 @@ public class ServletHorarioController extends HttpServlet {
        
        HttpSession sesion=request.getSession();
        sesion.setAttribute("listadoHorario", listaHorarios );
-       response.sendRedirect("Horario/Horario.jsp");
+       response.sendRedirect("horario/horario.jsp");
    }
    
     private void eliminarHorarios(HttpServletRequest request, HttpServletResponse response) throws IOException{
@@ -68,8 +69,27 @@ public class ServletHorarioController extends HttpServlet {
    }
    
    @Override
-   protected void doPost(HttpServletRequest request, HttpServletResponse response){
-       
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+       System.out.println("entrando a do Post");
+        String accion = request.getParameter("accion");
+        if (accion != null) {
+            switch (accion) {
+                case "insertar":
+                    insertarHorarios(request, response);
+                    break;
+            }
+        }
+   }
+   
+   private void insertarHorarios(HttpServletRequest request, HttpServletResponse response)throws IOException{
+       /*System.out.println("entrando a insertar horario");
+       Time horarioFinal=request.getTime("horarioFinal");
+       Time horarioInicio= request.getTime("horarioInicio");
+       Horario horario=new Horario(horarioFinal, horarioInicio);
+       System.out.println(horario);
+       int registrosAgregados=new HorarioDaoImpl().insertar(horario);
+       System.out.println("Cantidad de registros agregados:" + registrosAgregados);
+       listarHorarios(request, response);*/
    }
    
 }
