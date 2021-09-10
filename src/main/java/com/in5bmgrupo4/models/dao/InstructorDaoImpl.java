@@ -23,44 +23,9 @@ import java.util.List;
  */
 public class InstructorDaoImpl implements IInstructorDao {
 
-    private static final String SQL_SELECT = "SELECT instructor_id, apellidos, nombre, direccion, telefono FROM Instructor";
-    private static final String SQL_DELETE = "DELETE FROM Instructor WHERE instructor_id=?";
-
-    private Connection conn = null;
-    private PreparedStatement pstmt = null;
-    private ResultSet rs = null;
-    private Instructor instructor = null;
-    private List<Instructor> listaInstructores = new ArrayList<>();
-
     @Override
     public List<Instructor> listar() {
-
-        try {
-            conn = Conexion.getConnection();
-            pstmt = conn.prepareStatement(SQL_SELECT);
-            rs = pstmt.executeQuery();
-            while (rs.next()) {
-                int instructorId = rs.getInt("instructor_id");
-                String apellidos = rs.getString("apellidos");
-                String nombres = rs.getString("nombre");
-                String direccion = rs.getString("direccion");
-                String telefono = rs.getString("telefono");
-
-                instructor = new Instructor(instructorId, apellidos, nombres, direccion, telefono);
-                listaInstructores.add(instructor);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(System.out);
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        } finally {
-
-            Conexion.close(conn);
-            Conexion.close(pstmt);
-            Conexion.close(rs);
-
-        }
-        return listaInstructores;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -80,19 +45,7 @@ public class InstructorDaoImpl implements IInstructorDao {
 
     @Override
     public int eliminar(Instructor instructor) {
-        int rows = 0;
-        try {
-            conn = Conexion.getConnection();
-            pstmt = conn.prepareStatement(SQL_DELETE);
-            pstmt.setInt(1, instructor.getInstructorId());
-            rows = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace(System.out);
-        } finally {
-            Conexion.close(conn);
-            Conexion.close(pstmt);
-        }
-        return rows;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

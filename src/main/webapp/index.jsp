@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : index
     Created on : 28/08/2021, 12:30:54 PM
     Author     : gerar
@@ -18,7 +18,9 @@
         <script src="https://kit.fontawesome.com/a091fe25d9.js" crossorigin="anonymous"></script>
     </head>
     <body>
+            
             <jsp:include page="/WEB-INF/paginas/comunes/header.jsp" />
+            
             <main>
 
                 <section>
@@ -26,8 +28,10 @@
                 </section>
 
             </main>
+            
             <jsp:include page="/WEB-INF/paginas/comunes/footer.jsp" />
             <script src="assets/js/jquery-3.6.0.js"></script>
             <script src="assets/js/bootstrap.bundle.js"></script>
+
     </body>
 </html>

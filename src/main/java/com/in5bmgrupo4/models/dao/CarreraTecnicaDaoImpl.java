@@ -26,14 +26,14 @@ public class CarreraTecnicaDaoImpl implements ICarreraTecnicaDao{
     
     private static final String SQL_SELECT = "SELECT codigo_carrera, nombre FROM CarreraTecnica";
     private static final String SQL_DELETE = "DELETE FROM CarreraTecnica WHERE codigo_carrera = ?";
+    private static final String SQL_INSERT = "INSERT INTO CarreraTecnica(codigo_carrera, nombre) VALUES(?,?)";
+    
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs= null;
     private CarreraTecnica carrera = null;
     private List<CarreraTecnica> listaCarrerasTecnicas = new ArrayList<>();
     
-    /*private static final String SQL_SELECT = "SELECT codigo_carrera,nombre FROM carrera_tecnica";
-    private static final String SQL_DELETE = "DELETE FROM carrera_tecnica WHERE codigo_carrera = ?";*/
     
     @Override
     public List<CarreraTecnica> listar() {
@@ -69,7 +69,24 @@ public class CarreraTecnicaDaoImpl implements ICarreraTecnicaDao{
 
     @Override
     public int insertar(CarreraTecnica carreraTecnica) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int rows=0;
+        
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_INSERT);
+            pstmt.setString(1, carreraTecnica.getCodigoCarrera());
+            pstmt.setString(2, carreraTecnica.getNombre());
+            rows=pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
 
     @Override

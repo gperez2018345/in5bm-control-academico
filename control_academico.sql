@@ -243,4 +243,3 @@ CONSTRAINT FK_Curso_salon
 	VALUES ("10","2021010","10","2021-01-02 07:10:00");
 	SELECT * FROM AsignacionAlumno;
     
-    
