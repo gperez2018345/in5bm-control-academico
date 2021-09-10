@@ -5,23 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-=======
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
->>>>>>> 2935fa50212c9d5889f8ab23940f9951f09b6c97
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< HEAD
-        <title>Instructor</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
-=======
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../assets/css/styleIdentidad.css">
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
@@ -163,4 +153,4 @@
            <script src="../assets/js/jquery-3.6.0.js"></script>
            <script src="../assets/js/bootstrap.bundle.js"></script> 
     </body>
->>>>>>> 2935fa50212c9d5889f8ab23940f9951f09b6c97
+</html>
