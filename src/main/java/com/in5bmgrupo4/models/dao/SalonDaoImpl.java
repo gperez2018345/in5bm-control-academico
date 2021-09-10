@@ -25,6 +25,7 @@ public class SalonDaoImpl implements ISalonDao {
 
     private static final String SQL_SELECT = "Select salon_id, capacidad, descripcion, nombre_salon from Salon";
     private static final String SQL_DELETE = "delete from Salon where salon_id =?";
+    private static final String SQL_INSERT="INSERT INTO salon(capacidad, descripcion, nombre_salon)VALUES(?,?,?);";
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
     private Connection conn = null;
@@ -63,7 +64,23 @@ public class SalonDaoImpl implements ISalonDao {
 
     @Override
     public int insertar(Salon salon) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int rows=0;
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_INSERT);
+            pstmt.setInt(1,salon.getCapacidad());
+            pstmt.setString(2,salon.getDescripcion());
+            pstmt.setString(3,salon.getNombreSalon());
+            rows=pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
 
     @Override
