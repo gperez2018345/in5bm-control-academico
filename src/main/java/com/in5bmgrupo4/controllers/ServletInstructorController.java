@@ -22,10 +22,56 @@ import javax.servlet.http.HttpSession;
  * @date 28/08/2021
  * @time 04:40:12 PM
  */
+@WebServlet("/ServletInstructorController")
 
-public class ServletInstructorController{
+public class ServletInstructorController extends HttpServlet {
 
-    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String accion = request.getParameter("accion");
+
+        if (accion != null) {
+            switch (accion) {
+                case "listar":
+                    listarInstructores(request, response);
+                    break;
+
+                case "encontrar":
+                    break;
+
+                case "insertar":
+                    break;
+
+                case "actualizar":
+                    break;
+
+                case "eliminar":
+                    eliminarInstructor(request, response);
+                    break;
+            }
+        }
+    }
+
+    private void listarInstructores(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        List<Instructor> listaInstructor = new InstructorDaoImpl().listar();
+
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("listadoInstructor", listaInstructor);
+        response.sendRedirect("Instructor/Instructor.jsp");
+    }
+
+    private void eliminarInstructor(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int instructorId = Integer.parseInt(request.getParameter("instructorId"));
+        Instructor instructor = new Instructor(instructorId);
+        int registrosEliminados = new InstructorDaoImpl().eliminar(instructor);
+        System.out.println("Cantidad de registros eliminados:" + registrosEliminados);
+        listarInstructores(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+
+    }
     
     
     
