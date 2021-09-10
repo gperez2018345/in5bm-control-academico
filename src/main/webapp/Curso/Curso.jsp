@@ -64,7 +64,7 @@
                                     <input type="number" class="form-control" name="ciclo" id="ciclo" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="cupoMaximo">Cupo Maximo</label>
+                                    <label for="cupoMaximo">Cupo Máximo</label>
                                     <input type="number" class="form-control" name="cupoMaximo" id="cupoMaximo" required>
                                 </div>
                                 <div class="form-group">
