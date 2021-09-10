@@ -22,9 +22,11 @@
             <jsp:include page="/WEB-INF/paginas/comunes/header.jsp" />
             
             <main>
+
                 <section>
                     <img id="kinal-img-principal" src="assets/images/fotofondo.png" alt="Fundacion Kinal">
                 </section>
+
             </main>
             
             <jsp:include page="/WEB-INF/paginas/comunes/footer.jsp" />
