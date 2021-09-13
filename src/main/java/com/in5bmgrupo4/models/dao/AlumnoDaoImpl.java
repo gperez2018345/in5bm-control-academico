@@ -27,6 +27,8 @@ public class AlumnoDaoImpl implements IAlumnoDao{
     private static final String SQL_SELECT="SELECT carne, apellidos, nombres, email FROM Alumno";
     private static final String SQL_DELETE="DELETE FROM Alumno WHERE carne=?";
     private static final String SQL_INSERT="INSERT INTO Alumno(carne, apellidos, nombres, email)VALUES(?,?,?,?);";
+    private static final String SQL_FIND="SELECT carne, apellidos, nombres, email FROM Alumno WHERE carne=?;";
+    private static final String SQL_UPDATE="UPDATE Alumno SET apellidos=?, nombres=?, email=? WHERE carne=?;";
     
     private Connection conn=null;
     private PreparedStatement pstmt=null;
@@ -64,7 +66,31 @@ public class AlumnoDaoImpl implements IAlumnoDao{
 
     @Override
     public Alumno encontrar(Alumno alumno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_FIND);
+            pstmt.setString(1, alumno.getCarne());
+            rs=pstmt.executeQuery();
+            
+            while(rs.next()){
+                String apellidos=rs.getString("apellidos");
+                String nombres=rs.getString("nombres");
+                String email=rs.getString("email");
+            
+                alumno.setApellidos(apellidos);
+                alumno.setNombres(nombres);
+                alumno.setEmail(email);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+            Conexion.close(rs);
+        }
+        return alumno;
     }
 
     @Override
@@ -91,7 +117,24 @@ public class AlumnoDaoImpl implements IAlumnoDao{
 
     @Override
     public int actualizar(Alumno alumno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int rows=0;
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_UPDATE);
+            pstmt.setString(1,alumno.getApellidos());
+            pstmt.setString(2,alumno.getNombres());
+            pstmt.setString(3,alumno.getEmail());
+            pstmt.setString(4,alumno.getCarne());
+            rows=pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
 
     @Override

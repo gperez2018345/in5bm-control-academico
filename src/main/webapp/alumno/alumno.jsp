@@ -66,7 +66,7 @@
                             <h5 class="modal-title" id="exampleModalLabel">Agregar Alumno</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form method="POST" action="${pageContext.request.contextPath}/ServletAlumnoController">
+                        <form method="POST" action="${pageContext.request.contextPath}/ServletAlumnoController" class="was-validated">
                             <div class="modal-body">
 
                                 <div class="form-group">
