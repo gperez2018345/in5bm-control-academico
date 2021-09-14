@@ -28,6 +28,8 @@ public class HorarioDaoImpl implements IHorarioDao{
     private static final String SQL_SELECT="SELECT horario_id, horario_final, horario_inicio FROM Horario";
     private static final String SQL_DELETE="DELETE FROM Horario WHERE horario_id=?";
     private static final String SQL_INSERT="INSERT INTO Horario (horario_final, horario_inicio)VALUES(?,?);";
+    private static final String SQL_FIND="SELECT horario_id, horario_final, horario_inicio FROM Horario WHERE horario_id=?;";
+    private static final String SQL_UPDATE="UPDATE Horario SET horario_final=?, horario_inicio=? WHERE horario_id=?;";
     
     private Connection conn=null;
     private PreparedStatement pstmt=null;
@@ -64,7 +66,29 @@ public class HorarioDaoImpl implements IHorarioDao{
 
     @Override
     public Horario encontrar(Horario horario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_FIND);
+            pstmt.setInt(1, horario.getHorarioId());
+            rs=pstmt.executeQuery();
+            
+            while(rs.next()){
+                Time horarioInicio=rs.getTime("horario_inicio");
+                Time horarioFinal=rs.getTime("horario_final");
+            
+                horario.setHorarioInicio(horarioInicio);
+                horario.setHorarioFinal(horarioFinal);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+            Conexion.close(rs);
+        }
+        return horario;
     }
 
     @Override
@@ -89,7 +113,23 @@ public class HorarioDaoImpl implements IHorarioDao{
 
     @Override
     public int actualizar(Horario horario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       int rows=0;
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_UPDATE);
+            pstmt.setTime(1, horario.getHorarioFinal());
+            pstmt.setTime(2,horario.getHorarioInicio());
+            pstmt.setInt(3,horario.getHorarioId());
+            rows=pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
 
     @Override

@@ -6,6 +6,7 @@
 
 package com.in5bmgrupo4.models.domain;
 import java.sql.Time;
+import java.util.Date;
 
 /**
  *

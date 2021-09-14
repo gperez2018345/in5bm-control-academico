@@ -1,7 +1,7 @@
 <%-- 
-    Document   : editar-alumno
-    Created on : 13/09/2021, 03:38:01 PM
-    Author     : Diego Oswaldo Flores Rivas <dflores-2020010@kinal.edu.gt>
+    Document   : editar-horario
+    Created on : 13/09/2021, 07:33:42 PM
+    Author     : Pablo Emmanuel Mich Mux // Codigo Técnico: IN5BM
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,9 +16,9 @@
         <link rel="stylesheet" href="./assets/css/bootstrap.css">
         <link rel="stylesheet" href="./assets/css/style.css">
         <script src="https://kit.fontawesome.com/b54b4661b2.js" crossorigin="anonymous"></script>
-        <title>Editar Alumnos</title>
+        <title>Editar Horarios</title>
     </head>
-    
+
     <body>
         <!--Cabecera-->
         <jsp:include page="../WEB-INF/paginas/comunes/header.jsp"/>
@@ -28,31 +28,27 @@
                     <div class="col-12 col-md-12">
                         <div class="card mt-5">
                             <div class="card-header bg-black text-light">
-                                <h4 class="text-center">Editar Alumnos</h4>
+                                <h4 class="text-center">Editar Horarios</h4>
                             </div>
                             <div class="card-body bg-dark">
-                                <form method="POST" action="${pageContext.request.contextPath}/ServletAlumnoController" class="was-validated">
+                                <form method="POST" action="${pageContext.request.contextPath}/ServletHorarioController" class="was-validated">
                                     <div class="mb-3 mt-3">
-                                        <label for="carne" class="form-label text-light">Carne</label>
-                                        <input type="text" class="form-control" name="carne" id="carne" readonly value="${alumno.carne}">
+                                        <label for="horarioId" class="form-label text-light">ID</label>
+                                        <input type="text" class="form-control" name="horarioId" id="horarioId" readonly value="${horario.horarioId}">
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="apellidos" class="form-label text-light">Nombre</label>
-                                        <input type="text" class="form-control" name="apellidos" id="apellidos" required value="${alumno.apellidos}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="nombres" class="form-label text-light">Apellido</label>
-                                        <input type="text" class="form-control" name="nombres" id="nombres" required value="${alumno.nombres}">
+                                        <label for="horarioIncio" class="form-label text-light">Hora de Inicio</label>
+                                        <input type="time" class="form-control" name="horarioInicio" id="horarioInicio" required value="${horario.horarioInicio}">
                                     </div>
                                     <div class="mb-5">
-                                        <label for="email" class="form-label text-light">Email</label>
-                                        <input type="email" class="form-control" name="email" id="email" required value="${alumno.email}">
+                                        <label for="horarioFinal" class="form-label text-light">Hora Final</label>
+                                        <input type="time" class="form-control" name="horarioFinal" id="horarioFinal" required value="${horario.horarioFinal}">
                                     </div>
 
                                     <input type="hidden" name="accion" value="actualizar">
 
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.href = '${pageContext.request.contextPath}/ServletAlumnoController?accion=listar'">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.href = '${pageContext.request.contextPath}/ServletHorarioController?accion=listar'">
                                         Cancelar
                                     </button>
                                     <button type="submit" class="btn btn-success">Guardar</button>

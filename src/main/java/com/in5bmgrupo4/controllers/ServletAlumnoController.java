@@ -107,7 +107,7 @@ public class ServletAlumnoController extends HttpServlet {
         request.getRequestDispatcher(JSP_EDITAR_ALUMNO).forward(request, response);
         System.out.println(alumno);
     }
-    
+        
     private void actualizarAlumnos(HttpServletRequest request, HttpServletResponse response) throws IOException{
         System.out.println("entrando a actualizar alumno");
         String carne=request.getParameter("carne");
