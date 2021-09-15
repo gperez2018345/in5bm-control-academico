@@ -39,11 +39,11 @@
 
                                     <div class="mb-3">
                                         <label for="horarioIncio" class="form-label text-light">Hora de Inicio</label>
-                                        <input type="time" class="form-control" name="horarioInicio" id="horarioInicio" required value="${horario.horarioInicio}">
+                                        <input type="time" class="form-control" name="horarioInicio" id="horarioInicio" required value='<fmt:formatDate value="${horario.horarioInicio}" pattern="HH:mm"/>'>
                                     </div>
                                     <div class="mb-5">
                                         <label for="horarioFinal" class="form-label text-light">Hora Final</label>
-                                        <input type="time" class="form-control" name="horarioFinal" id="horarioFinal" required value="${horario.horarioFinal}">
+                                        <input type="time" class="form-control" name="horarioFinal" id="horarioFinal" required value='<fmt:formatDate value="${horario.horarioFinal}" pattern="HH:mm"/>'>
                                     </div>
 
                                     <input type="hidden" name="accion" value="actualizar">
