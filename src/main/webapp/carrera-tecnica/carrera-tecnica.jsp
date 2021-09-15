@@ -120,7 +120,7 @@
                                             <td>${carreraTecnica.nombre}</td>
 
                                             <td> <!---Editar--->
-                                                <a class="btn btn-secondary text-light" href="${pageContext.request.contextPath}/ervletCarreraTecnicaController?accion=editar&codigoCarrera=${carreraTecnica.codigoCarrera}">
+                                                <a class="btn btn-secondary text-light" href="${pageContext.request.contextPath}/ServletCarreraTecnicaController?accion=editar&codigoCarrera=${carreraTecnica.codigoCarrera}">
                                                     <i class="fas fa-edit"></i>Editar
                                                 </a>
                                             </td>
