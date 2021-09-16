@@ -42,6 +42,19 @@ public class Curso {
         this.salonId = salonId;
     }
 
+    public Curso(int ciclo, int cupoMaximo, int cupoMinimo, String descripcion, String codigoCarrera, int horarioId, int instructorId, int salonId) {
+        this.ciclo = ciclo;
+        this.cupoMaximo = cupoMaximo;
+        this.cupoMinimo = cupoMinimo;
+        this.descripcion = descripcion;
+        this.codigoCarrera = codigoCarrera;
+        this.horarioId = horarioId;
+        this.instructorId = instructorId;
+        this.salonId = salonId;
+    }
+    
+    
+
     public int getCursoId() {
         return cursoId;
     }

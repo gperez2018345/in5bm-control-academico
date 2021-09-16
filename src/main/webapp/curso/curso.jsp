@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="../assets/css/style.css">
         <script src="https://kit.fontawesome.com/611b0a953c.js" crossorigin="anonymous"></script>
 
-        <title>Curso</title>
+        <title>Listado Curso</title>
     </head>
     <body>
         <jsp:include page="/WEB-INF/paginas/comunes/header.jsp" />
@@ -143,7 +143,7 @@
                                             <td>${curso.instructorId}</td>
                                             <td>${curso.salonId}</td>
                                             <td>
-                                                <a class="btn btn-secondary text-light" href="${pageContext.request.contextPath}/ServletAlumnoController?accion=editar&cursoId=${curso.cursoId}">
+                                                <a class="btn btn-secondary text-light" href="${pageContext.request.contextPath}/ServletCursoController?accion=editar&cursoId=${curso.cursoId}">
                                                     <i class="far fa-edit"></i> Editar
                                                 </a>
                                             </td>
