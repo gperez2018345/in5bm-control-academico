@@ -27,7 +27,10 @@ public class AsignacionAlumnoDaoImpl implements IAsignacionAlumnoDao {
     private static final String SQL_SELECT = "SELECT asignacion_id, carne, curso_id,fecha_asignacion FROM asignacionAlumno";
     private static final String SQL_DELETE = "DELETE from asignacionAlumno where asignacion_id = ?";
     private static final String SQL_INSERT = "INSERT INTO asignacionAlumno (asignacion_id, carne, curso_id, fecha_asignacion) VALUES (?,?,?,?)";
-
+    private static final String SQL_FIND="SELECT asignacion_id, carne, curso_id,fecha_asignacion FROM asignacionAlumno WHERE asignacion_id=?";
+    private static final String SQL_UPDATE="UPDATE asignacionAlumno SET carne=?, curso_id=?, fecha_asignacion=? WHERE asignacion_id=?;";
+    
+    
     private Connection conn = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
@@ -64,7 +67,31 @@ public class AsignacionAlumnoDaoImpl implements IAsignacionAlumnoDao {
 
     @Override
     public AsignacionAlumno encontrar(AsignacionAlumno asignacionAlumno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_FIND);
+            pstmt.setString(1, asignacionAlumno.getAsignacionId());
+            rs=pstmt.executeQuery();
+            
+            while(rs.next()){
+                String carne = rs.getString("carne");
+                int cursoId = rs.getInt("curso_id");
+                Date fechaAsignacion = rs.getDate("fecha_asignacion");
+            
+                asignacionAlumno.setCarne(carne);
+                asignacionAlumno.setCursoId(cursoId);
+                asignacionAlumno.setFechaAsignacion(fechaAsignacion);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+            Conexion.close(rs);
+        }
+        return asignacionAlumno;
     }
 
     @Override
@@ -96,7 +123,24 @@ public class AsignacionAlumnoDaoImpl implements IAsignacionAlumnoDao {
 
     @Override
     public int actualizar(AsignacionAlumno asignacionAlumno) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int rows=0;
+        try {
+            conn=Conexion.getConnection();
+            pstmt=conn.prepareStatement(SQL_UPDATE);
+            pstmt.setString(1, asignacionAlumno.getCarne());
+            pstmt.setInt(2, asignacionAlumno.getCursoId());
+            pstmt.setDate(3, asignacionAlumno.getFechaAsignacion());
+            pstmt.setString(4, asignacionAlumno.getAsignacionId());
+            rows=pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }catch(Exception e){
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
 
     @Override
