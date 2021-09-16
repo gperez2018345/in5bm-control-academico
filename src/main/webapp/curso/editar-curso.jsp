@@ -30,7 +30,7 @@
                             <div class="card-header bg-black text-light">
                                 <h4 class="text-center">Editar Curso</h4>
                             </div>
-                            <div class="card-body bg-dark mb-5">
+                            <div class="card-body bg-dark">
                                 <form method="POST" action="${pageContext.request.contextPath}/ServletCursoController" class="was-validated">
                                     <div class="mb-3 mt-3">
                                         <label for="cursoId" class="form-label text-light">ID</label>

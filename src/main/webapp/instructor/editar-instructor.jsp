@@ -30,7 +30,7 @@
                             <div class="card-header bg-black text-light">
                                 <h4 class="text-center">Editar Instructores</h4>
                             </div>
-                            <div class="card-body bg-dark mb-5">
+                            <div class="card-body bg-dark">
                                 <form method="POST" action="${pageContext.request.contextPath}/ServletInstructorController" class="was-validated">
                                     <div class="mb-3 mt-3">
                                         <label for="instructorId" class="form-label text-light">ID</label>
@@ -45,11 +45,11 @@
                                         <label for="nombre" class="form-label text-light">Nombre</label>
                                         <input type="text" class="form-control" name="nombre" id="nombre" required value="${instructor.nombre}">
                                     </div>
-                                    <div class="mb-5">
+                                    <div class="mb-3">
                                         <label for="direccion" class="form-label text-light">Dirección</label>
                                         <input type="direccion" class="form-control" name="direccion" id="direccion" required value="${instructor.direccion}">
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-5">
                                         <label for="telefono" class="form-label text-light">Telefono</label>
                                         <input type="text" class="form-control" name="telefono" id="telefono" required value="${instructor.telefono}">
                                     </div>
