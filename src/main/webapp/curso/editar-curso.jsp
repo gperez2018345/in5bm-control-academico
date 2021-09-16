@@ -34,7 +34,7 @@
                                 <form method="POST" action="${pageContext.request.contextPath}/ServletCursoController" class="was-validated">
                                     <div class="mb-3 mt-3">
                                         <label for="cursoId" class="form-label text-light">ID</label>
-                                        <input type="text" class="form-control" name="cursoId" id="carne" readonly value="${curso.cursoId}">
+                                        <input type="number" class="form-control" name="cursoId" id="carne" readonly value="${curso.cursoId}">
                                     </div>
 
                                     <div class="mb-3">
@@ -57,7 +57,7 @@
 
                                     <div class="mb-3">
                                         <label for="codigoCarrera" class="form-label text-light">Codigo Carrera</label>
-                                        <input type="number" class="form-control" name="codigoCarrera" id="codigoCarrera" required value="${curso.codigoCarrera}">
+                                        <input type="text" class="form-control" name="codigoCarrera" id="codigoCarrera" required value="${curso.codigoCarrera}">
                                     </div>
 
                                     <div class="mb-3">

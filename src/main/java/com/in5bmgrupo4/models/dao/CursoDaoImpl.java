@@ -116,15 +116,14 @@ public class CursoDaoImpl implements ICursoDao{
         try {
             conn=Conexion.getConnection();
             pstmt=conn.prepareStatement(SQL_INSERT);
-            pstmt.setInt(1, curso.getCursoId());
-            pstmt.setInt(2,curso.getCiclo());
-            pstmt.setInt(3,curso.getCupoMaximo());
-            pstmt.setInt(4,curso.getCupoMaximo());
-            pstmt.setString(5, curso.getDescripcion());
-            pstmt.setString(6,curso.getCodigoCarrera());
-            pstmt.setInt(7,curso.getHorarioId());
-            pstmt.setInt(8,curso.getInstructorId());
-            pstmt.setInt(9,curso.getSalonId());
+            pstmt.setInt(1,curso.getCiclo());
+            pstmt.setInt(2,curso.getCupoMaximo());
+            pstmt.setInt(3,curso.getCupoMinimo());
+            pstmt.setString(4, curso.getDescripcion());
+            pstmt.setString(5,curso.getCodigoCarrera());
+            pstmt.setInt(6,curso.getHorarioId());
+            pstmt.setInt(7,curso.getInstructorId());
+            pstmt.setInt(8,curso.getSalonId());
             rows=pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
@@ -143,15 +142,16 @@ public class CursoDaoImpl implements ICursoDao{
         try {
             conn=Conexion.getConnection();
             pstmt=conn.prepareStatement(SQL_UPDATE);
-            pstmt.setInt(1, curso.getCursoId());
-            pstmt.setInt(2,curso.getCiclo());
-            pstmt.setInt(3,curso.getCupoMaximo());
-            pstmt.setInt(4,curso.getCupoMaximo());
-            pstmt.setString(5, curso.getDescripcion());
-            pstmt.setString(6,curso.getCodigoCarrera());
-            pstmt.setInt(7,curso.getHorarioId());
-            pstmt.setInt(8,curso.getInstructorId());
-            pstmt.setInt(9,curso.getSalonId());
+            
+            pstmt.setInt(1,curso.getCiclo());
+            pstmt.setInt(2,curso.getCupoMaximo());
+            pstmt.setInt(3,curso.getCupoMinimo());
+            pstmt.setString(4, curso.getDescripcion());
+            pstmt.setString(5,curso.getCodigoCarrera());
+            pstmt.setInt(6,curso.getHorarioId());
+            pstmt.setInt(7,curso.getInstructorId());
+            pstmt.setInt(8,curso.getSalonId());
+            pstmt.setInt(9, curso.getCursoId());
             rows=pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.out);

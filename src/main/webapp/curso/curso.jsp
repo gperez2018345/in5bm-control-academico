@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="codigoCarrera">Codigo Carrera</label>
-                                    <input type="number" class="form-control" name="codigoCarrera" id="codigoCarrera" required>
+                                    <input type="text" class="form-control" name="codigoCarrera" id="codigoCarrera" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="horarioId">Id Horario</label>
