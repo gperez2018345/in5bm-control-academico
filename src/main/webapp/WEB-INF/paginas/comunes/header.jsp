@@ -4,14 +4,14 @@
     Author     : melga
 --%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/index.jsp">Inicio <i class="fas fa-user-check"></i></a>
+                    <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/inicio.jsp">Inicio <i class="fas fa-user-check"></i></a>
                 </li>
                 <li class="nav-item">
 
@@ -36,6 +36,17 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/ServletSalonController?accion=listar">Salon   <i class="fas fa-school"></i></a>
                 </li>
             </ul>
+            <div class="mx-auto">
+                <div>
+                    <a class="bg-transparent"></a>
+                </div>
+            </div>
+            <div class=" navbar-nav ms-5">
+                <div class="nav-item">
+                    <a href="${pageContext.request.contextPath}/login.jsp" class="nav-link">Cerrar Sesion <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                </div>
+            </div>
         </div>
+
     </div>
 </nav>

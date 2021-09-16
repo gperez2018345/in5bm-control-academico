@@ -123,6 +123,17 @@ CONSTRAINT FK_Curso_salon
 			on update cascade
   )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
   
+  -- -----------------------------------------------------
+-- Tabla Login
+-- -----------------------------------------------------
+  DROP TABLE IF EXISTS Usuario;
+  CREATE TABLE IF NOT EXISTS Usuario (
+  usuario VARCHAR(25) NOT NULL,
+  pass VARCHAR(255) NOT NULL,
+  nombre VARCHAR(50),
+  PRIMARY KEY PK_Usuario(usuario)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  
   -- Insersion de datos en la entidad Alumnos
   INSERT INTO Alumno(carne, apellidos, nombres, email)values("2021001", "Gonzonalez", "Ricardo", "ricardo@gmail.com");
   INSERT INTO Alumno(carne, apellidos, nombres, email)values("2021002", "Perez", "Mariana", "mariana@gmail.com");
@@ -243,3 +254,6 @@ CONSTRAINT FK_Curso_salon
 	VALUES ("10","2021010","10","2021-01-02 07:10:00");
 	SELECT * FROM AsignacionAlumno;
     
+    -- Inserción de usuarios login
+	INSERT INTO Usuario(usuario, pass, nombre)
+    VALUES("root", "admin", "KinalAdmin");
