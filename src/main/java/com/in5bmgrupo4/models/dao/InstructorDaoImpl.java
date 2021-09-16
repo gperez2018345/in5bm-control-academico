@@ -25,6 +25,9 @@ public class InstructorDaoImpl implements IInstructorDao {
 
     private static final String SQL_SELECT = "SELECT instructor_id, apellidos, nombre, direccion, telefono FROM Instructor";
     private static final String SQL_DELETE = "DELETE FROM Instructor WHERE instructor_id=?";
+    private static final String SQL_INSERT = "INSERT INTO Instructor(apellidos, nombre, direccion, telefono)VALUES(?,?,?,?);";
+    private static final String SQL_FIND = "SELECT instructor_id, apellidos, nombre, direccion, telefono FROM Instructor WHERE instructor_id=?;";
+    private static final String SQL_UPDATE = "UPDATE Instructor SET apellidos=?, nombre=?, direccion=?, telefono=? WHERE instructor_id=?;";
 
     private Connection conn = null;
     private PreparedStatement pstmt = null;
@@ -42,11 +45,11 @@ public class InstructorDaoImpl implements IInstructorDao {
             while (rs.next()) {
                 int instructorId = rs.getInt("instructor_id");
                 String apellidos = rs.getString("apellidos");
-                String nombres = rs.getString("nombre");
+                String nombre = rs.getString("nombre");
                 String direccion = rs.getString("direccion");
                 String telefono = rs.getString("telefono");
 
-                instructor = new Instructor(instructorId, apellidos, nombres, direccion, telefono);
+                instructor = new Instructor(instructorId, apellidos, nombre, direccion, telefono);
                 listaInstructores.add(instructor);
             }
         } catch (SQLException e) {
@@ -65,17 +68,79 @@ public class InstructorDaoImpl implements IInstructorDao {
 
     @Override
     public Instructor encontrar(Instructor instructor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            conn = Conexion.getConnection();
+            pstmt = conn.prepareStatement(SQL_FIND);
+            pstmt.setInt(1, instructor.getInstructorId());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String apellidos = rs.getString("apellidos");
+                String nombre = rs.getString("nombre");
+                String direccion = rs.getString("direccion");
+                String telefono = rs.getString("telefono");
+
+                instructor.setApellidos(apellidos);
+                instructor.setNombre(nombre);
+                instructor.setDireccion(direccion);
+                instructor.setTelefono(telefono);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+            Conexion.close(rs);
+
+        }
+        return instructor;
     }
 
     @Override
     public int insertar(Instructor instructor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            pstmt = conn.prepareStatement(SQL_INSERT);
+            pstmt.setString(1, instructor.getApellidos());
+            pstmt.setString(2, instructor.getNombre());
+            pstmt.setString(3, instructor.getDireccion());
+            pstmt.setString(4, instructor.getTelefono());
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
 
     @Override
     public int actualizar(Instructor instructor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int rows = 0;
+        try {
+            conn = Conexion.getConnection();
+            pstmt = conn.prepareStatement(SQL_UPDATE);
+            pstmt.setString(1, instructor.getApellidos());
+            pstmt.setString(2, instructor.getNombre());
+            pstmt.setString(3, instructor.getDireccion());
+            pstmt.setString(4, instructor.getTelefono());  
+            pstmt.setInt(5, instructor.getInstructorId());
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(conn);
+            Conexion.close(pstmt);
+        }
+        return rows;
     }
 
     @Override

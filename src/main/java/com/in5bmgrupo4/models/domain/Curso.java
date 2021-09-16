@@ -14,11 +14,11 @@ package com.in5bmgrupo4.models.domain;
  */
 public class Curso {
     private int cursoId;
-    private int ciclio;
+    private int ciclo;
     private int cupoMaximo;
     private int cupoMinimo;
     private String descripcion;
-    private int codigoCarrera;
+    private String codigoCarrera;
     private int horarioId;
     private int instructorId;
     private int salonId;
@@ -26,9 +26,13 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso(int cursoId, int ciclio, int cupoMaximo, int cupoMinimo, String descripcion, int codigoCarrera, int horarioId, int instructorId, int salonId) {
+    public Curso(int cursoId) {
         this.cursoId = cursoId;
-        this.ciclio = ciclio;
+    }
+
+    public Curso(int cursoId, int ciclo, int cupoMaximo, int cupoMinimo, String descripcion, String codigoCarrera, int horarioId, int instructorId, int salonId) {
+        this.cursoId = cursoId;
+        this.ciclo = ciclo;
         this.cupoMaximo = cupoMaximo;
         this.cupoMinimo = cupoMinimo;
         this.descripcion = descripcion;
@@ -38,6 +42,19 @@ public class Curso {
         this.salonId = salonId;
     }
 
+    public Curso(int ciclo, int cupoMaximo, int cupoMinimo, String descripcion, String codigoCarrera, int horarioId, int instructorId, int salonId) {
+        this.ciclo = ciclo;
+        this.cupoMaximo = cupoMaximo;
+        this.cupoMinimo = cupoMinimo;
+        this.descripcion = descripcion;
+        this.codigoCarrera = codigoCarrera;
+        this.horarioId = horarioId;
+        this.instructorId = instructorId;
+        this.salonId = salonId;
+    }
+    
+    
+
     public int getCursoId() {
         return cursoId;
     }
@@ -46,12 +63,12 @@ public class Curso {
         this.cursoId = cursoId;
     }
 
-    public int getCiclio() {
-        return ciclio;
+    public int getCiclo() {
+        return ciclo;
     }
 
-    public void setCiclio(int ciclio) {
-        this.ciclio = ciclio;
+    public void setCiclo(int ciclo) {
+        this.ciclo = ciclo;
     }
 
     public int getCupoMaximo() {
@@ -78,11 +95,11 @@ public class Curso {
         this.descripcion = descripcion;
     }
 
-    public int getCodigoCarrera() {
+    public String getCodigoCarrera() {
         return codigoCarrera;
     }
 
-    public void setCodigoCarrera(int codigoCarrera) {
+    public void setCodigoCarrera(String codigoCarrera) {
         this.codigoCarrera = codigoCarrera;
     }
 
@@ -112,7 +129,7 @@ public class Curso {
 
     @Override
     public String toString() {
-        return "Curso{" + "cursoId=" + cursoId + ", ciclio=" + ciclio + ", cupoMaximo=" + cupoMaximo + ", cupoMinimo=" + cupoMinimo + ", descripcion=" + descripcion + ", codigoCarrera=" + codigoCarrera + ", horarioId=" + horarioId + ", instructorId=" + instructorId + ", salonId=" + salonId + '}';
+        return "Curso{" + "cursoId=" + cursoId + ", ciclo=" + ciclo + ", cupoMaximo=" + cupoMaximo + ", cupoMinimo=" + cupoMinimo + ", descripcion=" + descripcion + ", codigoCarrera=" + codigoCarrera + ", horarioId=" + horarioId + ", instructorId=" + instructorId + ", salonId=" + salonId + '}';
     }
-    
+
 }
