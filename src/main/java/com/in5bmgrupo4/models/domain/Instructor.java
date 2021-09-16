@@ -15,27 +15,27 @@ public class Instructor {
 
     private int instructorId;
     private String apellidos;
-    private String nombres;
+    private String nombre;
     private String direccion;
     private String telefono;
 
-    public Instructor() {
-    }
-
-    public Instructor(int instructorId, String apellidos, String nombres, String direccion, String telefono) {
+    public Instructor(int instructorId, String apellidos, String nombre, String direccion, String telefono) {
         this.instructorId = instructorId;
         this.apellidos = apellidos;
-        this.nombres = nombres;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+
+    public Instructor(String apellidos, String nombre, String direccion, String telefono) {
+        this.apellidos = apellidos;
+        this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
     }
 
     public Instructor(int instructorId) {
-         this.instructorId = instructorId;
-    }
-
-    public Instructor(String Id, String apellidos, String nombres, String direccion, String telefono) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.instructorId = instructorId;
     }
 
     public int getInstructorId() {
@@ -54,12 +54,12 @@ public class Instructor {
         this.apellidos = apellidos;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDireccion() {
@@ -80,7 +80,7 @@ public class Instructor {
 
     @Override
     public String toString() {
-        return "Instructor{" + "instructorId=" + instructorId + ", apellidos=" + apellidos + ", nombres=" + nombres + ", direccion=" + direccion + ", telefono=" + telefono + '}';
+        return "Instructor{" + "instructorId=" + instructorId + ", apellidos=" + apellidos + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + '}';
     }
 
 }

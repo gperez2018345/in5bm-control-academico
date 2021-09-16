@@ -63,24 +63,26 @@
                             <h5 class="modal-title" id="exampleModalLabel">Agregar Instructor</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form method="POST" action="${pageContext.request.contextPath}/ServletInstructorController">
+                        <form method="POST" action="${pageContext.request.contextPath}/ServletInstructorController" class="was-validated">
                             <div class="modal-body">
 
                                 <div class="form-group">
-                                    <label for="id">ID</label>
-                                    <input type="text" class="form-control" name="id" id="id">
                                 </div>
                                 <div class="form-group">
                                     <label for="apellidos">Apellido</label>
                                     <input type="text" class="form-control" name="apellidos" id="apellidos">
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombres">Nombre</label>
-                                    <input type="text" class="form-control" name="nombres" id="nombres">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre">
                                 </div>
                                 <div class="form-group">
                                     <label for="direccion">Direccion</label>
                                     <input type="direccion" class="form-control" name="direccion" id="direccion">
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono">Telefono</label>
+                                    <input type="telefono" class="form-control" name="telefono" id="telefono">
                                 </div>
                                 <input type="hidden" name="accion" value="insertar">
                             </div>
@@ -110,7 +112,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Apellidos</th>
-                                        <th>Nombres</th>
+                                        <th>Nombre</th>
                                         <th>Direccion</th>
                                         <th>Telefono</th>
                                         <th>Editar</th>
@@ -123,7 +125,7 @@
                                         <tr>
                                             <td>${instructor.instructorId}</td>
                                             <td>${instructor.apellidos} </td>
-                                            <td>${instructor.nombres}</td>
+                                            <td>${instructor.nombre}</td>
                                             <td>${instructor.direccion}</td>
                                             <td>${instructor.telefono}</td>
                                             <!-- editar -->

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : editar-alumno
-    Created on : 13/09/2021, 03:38:01 PM
-    Author     : Diego Oswaldo Flores Rivas <dflores-2020010@kinal.edu.gt>
+    Document   : editar-instructor
+    Created on : 15/09/2021, 08:14:03 PM
+    Author     : gerar
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="./assets/css/bootstrap.css">
         <link rel="stylesheet" href="./assets/css/style.css">
         <script src="https://kit.fontawesome.com/b54b4661b2.js" crossorigin="anonymous"></script>
-        <title>Editar Alumnos</title>
+        <title>Editar Intructores</title>
     </head>
     
     <body>
@@ -28,31 +28,35 @@
                     <div class="col-12 col-md-12">
                         <div class="card mt-5">
                             <div class="card-header bg-black text-light">
-                                <h4 class="text-center">Editar Alumnos</h4>
+                                <h4 class="text-center">Editar Instructores</h4>
                             </div>
-                            <div class="card-body bg-dark">
-                                <form method="POST" action="${pageContext.request.contextPath}/ServletAlumnoController" class="was-validated">
+                            <div class="card-body bg-dark mb-5">
+                                <form method="POST" action="${pageContext.request.contextPath}/ServletInstructorController" class="was-validated">
                                     <div class="mb-3 mt-3">
-                                        <label for="carne" class="form-label text-light">Carne</label>
-                                        <input type="text" class="form-control" name="carne" id="carne" readonly value="${alumno.carne}">
+                                        <label for="instructorId" class="form-label text-light">ID</label>
+                                        <input type="number" class="form-control" name="instructorId" id="instructorId" readonly value="${instructor.instructorId}">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="apellidos" class="form-label text-light">Apellidos</label>
-                                        <input type="text" class="form-control" name="apellidos" id="apellidos" required value="${alumno.apellidos}">
+                                        <input type="text" class="form-control" name="apellidos" id="apellidos" required value="${instructor.apellidos}">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="nombres" class="form-label text-light">Nombres</label>
-                                        <input type="text" class="form-control" name="nombres" id="nombres" required value="${alumno.nombres}">
+                                        <label for="nombre" class="form-label text-light">Nombre</label>
+                                        <input type="text" class="form-control" name="nombre" id="nombre" required value="${instructor.nombre}">
                                     </div>
                                     <div class="mb-5">
-                                        <label for="email" class="form-label text-light">Email</label>
-                                        <input type="email" class="form-control" name="email" id="email" required value="${alumno.email}">
+                                        <label for="direccion" class="form-label text-light">Dirección</label>
+                                        <input type="direccion" class="form-control" name="direccion" id="direccion" required value="${instructor.direccion}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="telefono" class="form-label text-light">Telefono</label>
+                                        <input type="text" class="form-control" name="telefono" id="telefono" required value="${instructor.telefono}">
                                     </div>
 
                                     <input type="hidden" name="accion" value="actualizar">
 
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.href = '${pageContext.request.contextPath}/ServletAlumnoController?accion=listar'">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.href = '${pageContext.request.contextPath}/ServletInstructorController?accion=listar'">
                                         Cancelar
                                     </button>
                                     <button type="submit" class="btn btn-success">Guardar</button>
@@ -70,3 +74,4 @@
         <script src="../assets/js/bootstrap.bundle.js"></script>
     </body>
 </html>
+
