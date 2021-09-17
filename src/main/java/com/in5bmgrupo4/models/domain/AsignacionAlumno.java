@@ -5,6 +5,7 @@
  */
 
 package com.in5bmgrupo4.models.domain;
+import java.io.Serializable;
 import java.sql.Date;
 /**
  *
@@ -12,7 +13,9 @@ import java.sql.Date;
  * @date 27/08/2021
  * @time 04:17:29 PM
  */
-public class AsignacionAlumno {
+public class AsignacionAlumno implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     private String asignacionId;
     private String carne;
     private int cursoId;

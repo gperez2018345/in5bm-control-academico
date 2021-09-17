@@ -5,14 +5,17 @@
  */
 package com.in5bmgrupo4.models.domain;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gerardo Andree Pérez Cabrera
  * @date 27/08/2021
  * @time 04:17:08 PM
  */
-public class Instructor {
+public class Instructor implements Serializable{
 
+    private static final long serialVersionUID = 1L;
     private int instructorId;
     private String apellidos;
     private String nombre;

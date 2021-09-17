@@ -5,6 +5,7 @@
  */
 
 package com.in5bmgrupo4.models.domain;
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 
@@ -14,8 +15,9 @@ import java.util.Date;
  * @date 27/08/2021
  * @time 04:16:22 PM
  */
-public class Horario {
+public class Horario implements Serializable{
     
+    private static final long serialVersionUID = 1L;
     private int horarioId;
     private Time horarioFinal;
     private Time horarioInicio;

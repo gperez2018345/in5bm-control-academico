@@ -6,13 +6,17 @@
 
 package com.in5bmgrupo4.models.domain;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gerardo Andree Pérez Cabrera
  * @date 27/08/2021
  * @time 04:17:18 PM
  */
-public class Curso {
+public class Curso implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     private int cursoId;
     private int ciclo;
     private int cupoMaximo;
