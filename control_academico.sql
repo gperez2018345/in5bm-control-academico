@@ -233,27 +233,27 @@ CONSTRAINT FK_Curso_salon
 
 -- Inserción de datos en la entidad: AsignacionAlumnos
 	INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
-	VALUES ("1","2021001","1","2021-01-01 07:00:00");
+	VALUES ("AS1","2021001","1","2021-01-01 07:00:00");
 	INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
-	VALUES ("2","2021002","2","2021-01-02 07:10:00");
+	VALUES ("AS2","2021002","2","2021-01-02 07:10:00");
     INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
-	VALUES ("3","2021003","3","2021-01-03 07:05:00");
+	VALUES ("AS3","2021003","3","2021-01-03 07:05:00");
     INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
-	VALUES ("4","2021004","4","2021-01-01 07:08:00");
+	VALUES ("AS4","2021004","4","2021-01-01 07:08:00");
     INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
-	VALUES ("5","2021005","5","2021-01-02 07:00:00");
+	VALUES ("AS5","2021005","5","2021-01-02 07:00:00");
     INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
-	VALUES ("6","2021006","6","2021-01-03 07:01:00");
+	VALUES ("AS6","2021006","6","2021-01-03 07:01:00");
     INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
-	VALUES ("7","2021007","7","2021-01-03 07:00:00");
+	VALUES ("AS7","2021007","7","2021-01-03 07:00:00");
     INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
-	VALUES ("8","2021008","8","2021-01-04 07:00:00");
+	VALUES ("AS8","2021008","8","2021-01-04 07:00:00");
     INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
-	VALUES ("9","2021009","9","2021-01-01 07:02:00");
+	VALUES ("AS9","2021009","9","2021-01-01 07:02:00");
     INSERT INTO AsignacionAlumno(asignacion_id,carne,curso_id,fecha_asignacion) 
-	VALUES ("10","2021010","10","2021-01-02 07:10:00");
+	VALUES ("AS10","2021010","10","2021-01-02 07:10:00");
 	SELECT * FROM AsignacionAlumno;
     
     -- Inserción de usuarios login
 	INSERT INTO Usuario(usuario, pass, nombre)
-    VALUES("root", "admin", "KinalAdmin");
+    VALUES("root", "YWRtaW4=", "KinalAdmin");

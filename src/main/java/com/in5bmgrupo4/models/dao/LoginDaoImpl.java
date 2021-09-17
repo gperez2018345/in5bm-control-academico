@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,28 +29,12 @@ public class LoginDaoImpl implements ILoginDao {
     @Override
     public Boolean login(Login login) {
         boolean log = false;
-        try {
-            conn = Conexion.getConnection();
-            pstmt = conn.prepareStatement(SQL_LOGIN);
-            pstmt.setString(1, login.getUser());
-            rs = pstmt.executeQuery();
-            if (rs != null) {
-                while (rs.next()) {
-                    String user=rs.getString("usuario");
-                    String password = rs.getString("pass");
-                    String nombreUser = rs.getString("nombre");
-                    log = password.equals(login.getPass());
-                    this.login=new Login(user, password, nombreUser);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(System.out);
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        } finally {
-            Conexion.close(conn);
-            Conexion.close(pstmt);
-            Conexion.close(rs);
+        getPassword(login.getUser());
+        
+        if (login.getPass().equals(getPassword(login.getUser().trim()))){
+            log = true;
+        }else{
+            log = false;
         }
         return log;
     }
@@ -62,5 +47,41 @@ public class LoginDaoImpl implements ILoginDao {
         this.login = login;
     }
 
+    private String getPassword(String user) {
+        String passDecodificado = null;
+
+        try {
+            conn = Conexion.getConnection();
+            pstmt = conn.prepareCall(SQL_LOGIN);
+            pstmt.setString(1, user);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                
+                String usuario = rs.getString("usuario");
+                String pass = rs.getString("pass");
+                String nombre = rs.getString("nombre");
+
+                passDecodificado = new String(Base64.getDecoder().decode(pass));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+
+            }
+        }
+        return passDecodificado;
+    }
     
 }

@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-12">
-                        <div class="card mt-5">
+                        <div class="card mt-5 mb-5">
                             <div class="card-header bg-black text-light">
                                 <h4 class="text-center">Editar Curso</h4>
                             </div>
